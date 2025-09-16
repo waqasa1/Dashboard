@@ -34,6 +34,30 @@ const Book = () => {
       niche: "Research",
       title: "Copywriting content",
       description: "Create content for paceland App",
+      image: 'none',
+      status: "Ongoing",
+      priority: "Moderate",
+    },
+    {
+      niche: "Planning",
+      title: "Update Requirement list",
+      description: "Create content for paceland App",
+      image: 'none',
+      status: "Pending",
+      priority: "Critical",
+    },
+    {
+      niche: "Design",
+      title: "Create styleguide foundation",
+      description: "Create content for paceland App",
+      image: insurance,
+      status: "In review",
+      priority: "Minor",
+    },
+    {
+      niche: "Research",
+      title: "Copywriting content",
+      description: "Create content for paceland App",
       image: insurance,
       status: "Ongoing",
       priority: "Moderate",
@@ -42,7 +66,7 @@ const Book = () => {
       niche: "Planning",
       title: "Update Requirement list",
       description: "Create content for paceland App",
-      image: insurance,
+      image: 'none',
       status: "Pending",
       priority: "Critical",
     },
@@ -59,24 +83,37 @@ const Book = () => {
 
   return (
     <>
-        <Typography sx={{ p: 3, px: '50px', fontSize: '30px' }}>🔥 Tasks</Typography>
-        <Box sx={{ py: "20px", px: '20px' }}>
-            <Box
-              sx={{
-                display:'grid',
-                
-              }}
-            >
-              {cardData.map((card, index) => (
+      <Typography sx={{ p: 3, px: '50px', fontSize: '30px' }}>🔥 Tasks</Typography>
+      <Box sx={{ py: "20px", px: '20px' }}>
+        <Box sx={{ py: "20px", px: "20px" }}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "500px 500px",
+              gap: 2,
+              gridAutoFlow:'row dense'
+            }}
+          >
+            {cardData.map((card, index) => {
+              const hasImage = card.image !== "none";
+
+              // Assign spans based on content
+              const gridColumn = index % 2 === 0 ? "1" : "2"; // alternate columns
+              const gridRow = hasImage ? "span 13" : "span 7"; // image = bigger span
+
+              return (
                 <Card
                   onClick={() => handleDrawerOpen(card)}
                   key={index}
                   sx={{
-                    width: { xs: "100%", lg: "30%" },
+                    gridColumn,
+                    gridRow,
                     padding: "18px",
                     border: "1px solid rgb(231, 225, 225)",
                     borderRadius: "10px",
                     cursor: "pointer",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
                   <Button
@@ -84,24 +121,26 @@ const Book = () => {
                       fontSize: "12px",
                       color: "white",
                       fontWeight: "600",
-                      backgroundColor: 'blue',
+                      backgroundColor: "blue",
                       marginBottom: "10px",
+                      width: "fit-content",
                     }}
                   >
                     {card.niche}
                   </Button>
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={card.image}
-                    alt="Task"
-                    sx={{ borderRadius: "10px" }}
-                  />
-                  <CardContent>
-                    <Typography
-                      variant="h5"
-                      sx={{ fontSize: "16px", fontWeight: 600 }}
-                    >
+
+                  {card.image !== 'none' && (
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={card.image}
+                      alt="Task"
+                      sx={{ borderRadius: "10px", marginBottom: "10px" }}
+                    />
+                  )}
+
+                  <CardContent sx={{ p: 0 }}>
+                    <Typography variant="h5" sx={{ fontSize: "16px", fontWeight: 600 }}>
                       {card.title}
                     </Typography>
                     <Typography
@@ -119,20 +158,24 @@ const Book = () => {
                       sx={{
                         fontSize: "16px",
                         marginTop: "10px",
-                        border: '1px solid gray',
-                        width: 'fit-content',
-                        padding: '5px',
-                        borderRadius: '10px',
-                        color: 'white',
+                        border: "1px solid gray",
+                        width: "fit-content",
+                        padding: "5px",
+                        borderRadius: "10px",
+                        color: "white",
                       }}
                     >
                       May 16, 2025
                     </Typography>
                   </CardContent>
                 </Card>
-              ))}
-            </Box>
+              );
+            })}
+
           </Box>
+        </Box>
+      </Box>
+
 
       {/* Drawer Component */}
       <Drawer
@@ -161,14 +204,14 @@ const Book = () => {
 
           {/* Add more content here */}
           <Divider />
-          <Typography sx={{marginBottom:'20px', marginTop:'20px'}}>Properties</Typography>
-          <Box sx={{marginBottom:'20px'}}>
-            <Box sx={{display:'flex', justifyContent:'space-between'}}>
-              <Typography sx={{color:'gray'}}>Progress</Typography>
+          <Typography sx={{ marginBottom: '20px', marginTop: '20px' }}>Properties</Typography>
+          <Box sx={{ marginBottom: '20px' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Typography sx={{ color: 'gray' }}>Progress</Typography>
               <StatusIndicator status={selectedCard?.status} />
             </Box>
-            <Box sx={{display:'flex', justifyContent:'space-between'}}>
-              <Typography sx={{color:'gray'}}>Urgency</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Typography sx={{ color: 'gray' }}>Urgency</Typography>
               <SignalStrength priority={selectedCard?.priority} />
             </Box>
           </Box>

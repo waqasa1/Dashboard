@@ -13,10 +13,9 @@ To run this project locally:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Tayyab-CodeLover/ThinkoDashboard.git
-
+git clone https://github.com/waqasa1/Dashboard.git
 # 2. Navigate into the project directory
-cd ThinkoDashboard
+cd Dashboard
 
 # 3. Install dependencies
 npm install
