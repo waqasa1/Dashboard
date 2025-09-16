@@ -6,11 +6,10 @@ import Task from '../Components/Task.jsx'
 const Home = () => {
   return (
     <>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, gap: '20px', justifyContent: 'center'}} >
-          <Cards />
-        </Box>
-
-        <Task />
+      <Box sx={{ px: { xs: 2, md: 4 }, py: 2 }}>
+        <Cards />
+      </Box>
+      <Task />
     </>
   )
 }
