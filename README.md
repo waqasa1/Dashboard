@@ -36,7 +36,7 @@ This is an open source project — contributions, ideas, and improvements are al
 
 If you’re a developer who wants to contribute or just collaborate:
 
-📧 Feel free to contact me at: tayyabhussain505@gmail.com
+📧 Feel free to contact me at: waqasanwar1308@gmail.com
 I'm happy to connect with learners and developers worldwide.
 
 🧑‍💻 How to Contribute
@@ -48,9 +48,9 @@ Push (git push origin your-feature)
 Open a Pull Request
 
 👤 Author
-Tayyab Hussain
-📧 tayyabhussain505@gmail.com
-🌐 GitHub – Tayyab-CodeLover
+Waqas Anwar
+📧 waqasanwar1308@gmail.com
+🌐 GitHub – waqasa1
 
 ⭐ Support This Project
 If you found this project helpful or interesting:
